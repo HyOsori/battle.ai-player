@@ -4,6 +4,7 @@ from baseClass.Client import Client
 from MyPixelsParser import MyPixelsParser
 
 # server HOST and PORT#
+#HOST = '104.199.218.103'
 HOST = '127.0.0.1'
 PORT = 9001
 
