@@ -35,5 +35,14 @@ class MyPixelsParser(PixelsParser):
         TO - DO
         '''
 
+        if ruler_self == 1:
+            my_color = self.color_array[start_point_x[0]][start_point_y[0]]
+        elif ruler_self == 2:
+            my_color = self.color_array[start_point_x[1]][start_point_y[1]]
+
+        return_color = random.randint(1, 6)
+        while return_color == enemy_chosen_color or return_color == my_color:
+            return_color = random.randint(1, 6)
+
         output_data = {'chosen_color': return_color}
         return output_data
