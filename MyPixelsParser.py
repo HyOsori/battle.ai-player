@@ -35,6 +35,5 @@ class MyPixelsParser(PixelsParser):
         TO - DO
         '''
 
-
         output_data = {'chosen_color': return_color}
         return output_data
