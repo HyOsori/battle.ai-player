@@ -2,7 +2,7 @@ import json
 import socket
 from base.string import *
 
-BUFFER_SIZE = 256
+BUFFER_SIZE = 1024
 
 
 class ConnectionHandler(object):

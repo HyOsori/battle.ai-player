@@ -1,7 +1,8 @@
 from base.player import play
-from customlogic import CustomOMOKLogic
+from omoklogic import CustomOMOKLogic
+from alkakilogic import CustomALKAKILogic
 
 
 if __name__ == "__main__":
-    logic = CustomOMOKLogic()
+    logic = CustomALKAKILogic()
     play(logic)
