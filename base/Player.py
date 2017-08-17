@@ -34,7 +34,7 @@ class Player(object):
     def play_game(self):
         while not self.is_end:
             message = self.conn.receive_data()
-            print(message)
+            # print(message)
             if message[MSG_TYPE] == END:
                 self.is_end = True
                 self.print_end_status(message[ERROR_CODE])

@@ -30,7 +30,6 @@ class ConnectionHandler(object):
         message = json.loads(message.decode())
         data = message[DATA]
 
-        print(data)
         if data[RESPONSE] == OK:
             return True
         else:
@@ -38,12 +37,12 @@ class ConnectionHandler(object):
 
     def receive_data(self):
         message = self.conn.recv(BUFFER_SIZE)
-        print(message)
         message = json.loads(message.decode())
 
         return message
 
     def send_data(self, message):
+
         message = json.dumps(message).encode()
         self.conn.send(message)
 
