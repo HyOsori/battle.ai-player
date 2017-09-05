@@ -7,6 +7,7 @@ PORT = 9001
 ON_GAME = 1
 WAITING = 2
 
+USER_NAME = None
 
 class Player(object):
     def __init__(self, logic=None):
@@ -22,10 +23,12 @@ class Player(object):
         return self.conn.connect(ADDRESS, PORT)
 
     def confirm_username(self, username):
+        global USER_NAME
         # send username to server
         # y: OK
         if self.conn.register_username(username):
             self.username = username
+            USER_NAME = username
             return True
         # n: NO
         else:

@@ -1,7 +1,7 @@
 from base.logichandler import LogicHandler
-from base.string import *
 import math
-
+from base.logger import PlayerLogger
+import base.player
 BOARD = "board"
 
 
@@ -14,7 +14,6 @@ class CustomALKAKILogic(LogicHandler):
         self.player_pos = None
 
     def init_phase(self, msg_type, data):
-
         self.board_size = data['board_size']
         self.count = data['count']
         self.radius = data['radius']
@@ -22,19 +21,22 @@ class CustomALKAKILogic(LogicHandler):
         return msg_type, {"response": "OK"}
 
     def loop_phase(self, msg_type, data):
+
+        my_arr = data["my_arr"]
+        enemy_arr = data["enemy_arr"]
+
         index = 0
-        direction = self.get_direction_depending_on_position(0, 0, 1, 0)
-        force = self.get_distance(0, 0, 1, 0)
+        direction = [enemy_arr[0][0] - my_arr[0][0], enemy_arr[0][1] - my_arr[0][1]]
+        force = int(base.player.USER_NAME)
 
-        if force > 5:
-            force = 5
-
-        return_dict = {
+        message = {
             'index': index,
             'direction': direction,
             'force': force
         }
-        return msg_type, return_dict
+
+        PlayerLogger.instance().logger().debug("send message: %s" % message)
+        return msg_type, message
 
     # Logic Side
     def get_direction_depending_on_position(self, x_prev, y_prev, x_next, y_next):
@@ -57,3 +59,4 @@ class CustomALKAKILogic(LogicHandler):
         return math.sqrt(
             math.pow(x_next - x_prev, 2) +
             math.pow(y_next - y_prev, 2))
+
